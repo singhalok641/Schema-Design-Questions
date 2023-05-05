@@ -63,8 +63,6 @@ This project provides a sample implementation of a database schema for a movie d
 
 ## Question 2
 
-Sure, here's the formatted text that you can copy and paste into your README.md file:
-
 # Scaler Academy Schema Design Project
 
 This project is a sample implementation of a database schema for an online learning platform called Scaler Academy. The database contains information about students, batches, lectures, assignments, homework, instructors, and more.
