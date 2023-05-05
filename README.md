@@ -147,3 +147,70 @@ The schema consists of the following tables and attributes:
 - **instructor_id** (integer): Primary key for each instructor
 - **name** (string): Name of the instructor
 - **email** (string): Email address of the instructor
+
+
+## Question 3
+# Netflix Schema Design
+
+We are going to design a database schema for a system similar to Netflix. The system should have the following use cases:
+
+1. Users can create profiles that have separate independent environments. Each profile has a name and a type. Type can be KID or ADULT.
+2. There are multiple videos on Netflix. For each video, there will be a title, description, and a cast.
+3. A cast is a list of actors who were part of the video. For each actor, we need to know their name and the list of videos they were part of.
+4. For every video, for any profile who watched that video, we need to know the status (COMPLETED/ IN PROGRESS).
+5. For every profile for whom a video is in progress, we want to know their last watch timestamp.
+
+## Tables:
+
+1. User:
+
+  - user_id (PK)
+  - email
+  - password
+
+2. Profile:
+
+  - profile_id (PK)
+  - user_id (FK)
+  - name
+  - type (KID or ADULT)
+
+3. Video:
+
+  - video_id (PK)
+  - title
+  - description
+
+4. Actor:
+
+  - actor_id (PK)
+  - name
+
+5. Video_Actor:
+
+  - video_id (PK) (FK)
+  - actor_id (PK) (FK)
+
+6. Watch:
+
+  - profile_id (PK) (FK)
+  - video_id (PK) (FK)
+  - status (COMPLETED/IN PROGRESS)
+  - last_watched_timestamp
+
+## Relationships:
+
+1. User to Profile: One user can have multiple profiles, but each profile belongs to only one user.
+2. Profile to Watch: One profile can have multiple watches, but each watch belongs to only one profile.
+3. Video to Video_Actor: One video can have multiple actors, and one actor can be a part of multiple videos.
+4. Video to Watch: One video can have multiple watches, and one watch belongs to only one video.
+5. Profile and Video to Watch: One profile can have multiple watches of different videos, and one video can have multiple watches by different profiles.
+
+## Indexes:
+
+1. User: email
+2. Profile: user_id
+3. Video: title
+4. Actor: name
+5. Video_Actor: video_id, actor_id
+6. Watch: profile_id, video_id
